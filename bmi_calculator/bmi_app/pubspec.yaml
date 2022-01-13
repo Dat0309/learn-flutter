@@ -1,4 +1,4 @@
-name: get_started_flutter
+name: bmi_app
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -34,12 +34,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  shared_preferences: ^2.0.12
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
