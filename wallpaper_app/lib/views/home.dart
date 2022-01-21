@@ -104,7 +104,9 @@ class _HomeState extends State<Home> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SearchView()));
+                                  builder: (context) => SearchView(
+                                        searchControler.text,
+                                      )));
                         }
                       },
                       child: Container(
