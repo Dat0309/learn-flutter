@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:wallpaper_app/data/data.dart';
 import 'package:wallpaper_app/models/categorie.dart';
 import 'package:wallpaper_app/models/photo.dart';
+import 'package:wallpaper_app/views/categories.dart';
 import 'package:wallpaper_app/views/search.dart';
 import 'package:wallpaper_app/widgets/widget.dart';
 import 'package:http/http.dart' as http;
@@ -181,7 +182,14 @@ class CategoriesTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoriesScreen(
+                      catName,
+                    )));
+      },
       child: Container(
         margin: EdgeInsets.only(right: 8),
         child: kIsWeb
