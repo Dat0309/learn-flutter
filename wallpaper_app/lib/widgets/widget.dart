@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/models/photo.dart';
+import 'package:wallpaper_app/views/image_view.dart';
 
 Widget wallPaper(List<PhotosModel> photos, BuildContext context) {
   return Container(
@@ -18,7 +19,14 @@ Widget wallPaper(List<PhotosModel> photos, BuildContext context) {
       children: photos.map((PhotosModel photosModel) {
         return GridTile(
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ImageView(
+                            photosModel.src.portrait,
+                          )));
+            },
             child: Hero(
               tag: photosModel.src.portrait,
               child: Container(

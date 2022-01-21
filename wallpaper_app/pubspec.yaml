@@ -38,6 +38,10 @@ dependencies:
   http: ^0.13.4
   url_launcher: ^6.0.18
   url_launcher_web: ^2.0.6
+  permission_handler: ^8.3.0
+  random_string: ^2.3.1
+  dio: ^4.0.4
+  image_gallery_saver: ^1.7.1
 
 dev_dependencies:
   flutter_test:
