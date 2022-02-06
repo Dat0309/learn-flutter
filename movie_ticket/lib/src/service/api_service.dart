@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:moviedb_app/src/model/cast_list.dart';
-import 'package:moviedb_app/src/model/genre.dart';
-import 'package:moviedb_app/src/model/movie.dart';
-import 'package:moviedb_app/src/model/movie_detail.dart';
-import 'package:moviedb_app/src/model/movie_image.dart';
-import 'package:moviedb_app/src/model/person.dart';
+import 'package:movie_ticket/src/model/cast_list.dart';
+import 'package:movie_ticket/src/model/genre.dart';
+import 'package:movie_ticket/src/model/movie.dart';
+import 'package:movie_ticket/src/model/movie_detail.dart';
+import 'package:movie_ticket/src/model/movie_image.dart';
+import 'package:movie_ticket/src/model/person.dart';
 
 class ApiService {
   final Dio _dio = Dio();

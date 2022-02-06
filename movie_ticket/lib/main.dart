@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moviedb_app/src/ui/home_screen.dart';
+import 'package:movie_ticket/src/ui/category_screen.dart';
+import 'package:movie_ticket/src/ui/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
