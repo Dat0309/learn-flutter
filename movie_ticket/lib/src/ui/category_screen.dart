@@ -67,6 +67,26 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
     });
   }
 
+  Future getMovieByGenre(int genreId) async {
+    await http
+        .get(
+      Uri.parse("$baseUrl/discover/movie?with_genres=$genreId&$apiKey"),
+    )
+        .then((value) {
+      Map<String, dynamic> jsonData = jsonDecode(value.body);
+      if (movies.length > 0) movies.clear();
+      // jsonData["results"].forEach((element) {
+      //   Movie movie = Movie.fromJson(element);
+      //   movies.add(movie);
+
+      var movieList = jsonData['results'] as List;
+      movies = movieList.map((e) => Movie.fromJson(e)).toList();
+      print('movies now ${movies.length}');
+      // });
+      setState(() {});
+    });
+  }
+
   Future getTopRateMovie() async {
     await http
         .get(
@@ -137,6 +157,9 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
                           setState(() {
                             Genre genre = genres[index];
                             selectedGenre = genre.id;
+                            setState(() {
+                              getMovieByGenre(selectedGenre);
+                            });
                           });
                         },
                         child: Container(
@@ -210,7 +233,7 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MovieDetailScreen(),
+                              builder: (context) => MovieDetailScreen(movie),
                             ),
                           );
                         },
@@ -350,7 +373,7 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MovieDetailScreen(),
+                              builder: (context) => MovieDetailScreen(movie),
                             ),
                           );
                         },
@@ -490,7 +513,7 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MovieDetailScreen(),
+                              builder: (context) => MovieDetailScreen(movie),
                             ),
                           );
                         },
