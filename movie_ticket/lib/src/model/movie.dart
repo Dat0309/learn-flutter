@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Movie {
   final String backdropPath;
   final int id;
