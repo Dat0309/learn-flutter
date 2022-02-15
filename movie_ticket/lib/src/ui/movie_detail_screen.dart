@@ -95,6 +95,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     getYoutubeId(widget.movie.id);
     super.initState();
     print('initstate ${movieDetail?.casts.length}');
+    print('innitState ${movieDetail?.movieImage.backdrops.length}');
   }
 
   @override
