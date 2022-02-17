@@ -344,115 +344,31 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             itemCount: 10),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 40,
                       ),
-                      Text(
-                        'Diễn viên'.toUpperCase(),
-                        style: TextStyle(
-                          fontFamily: 'muli',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.black45,
+                      Positioned(
+                        left: 60,
+                        right: 60,
+                        bottom: 30,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Text(
+                              'Mua vé',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                                fontFamily: 'muli',
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 110,
-                        child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              if (movieDetail?.casts.length != 0) {
-                                Cast cast = movieDetail?.casts[index] as Cast;
-                                return Container(
-                                  child: Column(
-                                    children: [
-                                      Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                        ),
-                                        elevation: 3,
-                                        child: ClipRRect(
-                                          child: CachedNetworkImage(
-                                            imageUrl:
-                                                'https://image.tmdb.org/t/p/w200${cast.profilePath}',
-                                            imageBuilder:
-                                                (context, imgProvider) {
-                                              return Container(
-                                                width: 80,
-                                                height: 80,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(100)),
-                                                  image: DecorationImage(
-                                                    image: imgProvider,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            placeholder: (context, url) =>
-                                                Container(
-                                              width: 80,
-                                              height: 80,
-                                              child: Center(
-                                                child: Platform.isAndroid
-                                                    ? CircularProgressIndicator()
-                                                    : CupertinoActivityIndicator(),
-                                              ),
-                                            ),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    Container(
-                                              width: 80,
-                                              height: 80,
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'assets/images/img_not_found.jpg'),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Center(
-                                          child: Text(
-                                            cast.name.toUpperCase(),
-                                            style: TextStyle(
-                                              color: Colors.black54,
-                                              fontSize: 8,
-                                              fontFamily: 'muli',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Center(
-                                          child: Text(
-                                            cast.character.toUpperCase(),
-                                            style: TextStyle(
-                                              color: Colors.black54,
-                                              fontSize: 8,
-                                              fontFamily: 'muli',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              } else {
-                                return Container();
-                              }
-                            },
-                            separatorBuilder: (context, index) =>
-                                VerticalDivider(
-                                  color: Colors.transparent,
-                                  width: 5,
-                                ),
-                            itemCount: 20),
                       ),
                     ],
                   ),
