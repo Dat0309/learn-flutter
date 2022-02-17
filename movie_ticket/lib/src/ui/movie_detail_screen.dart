@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:movie_ticket/src/model/movie_detail.dart';
 import 'package:movie_ticket/src/model/movie_image.dart';
 import 'package:movie_ticket/src/model/screen_shot.dart';
+import 'package:movie_ticket/src/ui/buy_ticket_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MovieDetailScreen extends StatefulWidget {
@@ -351,7 +352,16 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         right: 60,
                         bottom: 30,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => BuyTicketPage(
+                                    titleMovie: widget.movie.title,
+                                    imgMovie: widget.movie.backdropPath),
+                              ),
+                            );
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             height: 60,
