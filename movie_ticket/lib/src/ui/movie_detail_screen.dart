@@ -357,8 +357,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (_) => BuyTicketPage(
-                                    titleMovie: widget.movie.title,
-                                    imgMovie: widget.movie.backdropPath),
+                                  titleMovie: widget.movie.title,
+                                  imgMovie: widget.movie.backdropPath,
+                                  budget: movieDetail?.budget as String,
+                                ),
                               ),
                             );
                           },
