@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recipesapp/models/recipe.api.dart';
 import 'package:recipesapp/models/recipe.dart';
+import 'package:recipesapp/views/widget/category_screen.dart';
+import 'package:recipesapp/views/widget/recipe_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -147,6 +149,35 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  BuildWidgetCategory(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  _isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : ListView.separated(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            if (_recipes.isNotEmpty) {
+                              return RecipeCard(
+                                  title: _recipes[index].name,
+                                  cookTime: _recipes[index].totalTime,
+                                  rating: _recipes[index].rating.toString(),
+                                  image: _recipes[index].images);
+                            }
+                            return Container();
+                          },
+                          separatorBuilder: (BuildContext context, int index) =>
+                              VerticalDivider(
+                            color: Colors.transparent,
+                            width: 5,
+                          ),
+                          itemCount: _recipes.length,
+                        ),
                 ],
               ),
             ),
