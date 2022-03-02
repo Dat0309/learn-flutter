@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:grocery_animation_app/constants.dart';
 import 'package:grocery_animation_app/controllers/home_controller.dart';
 import 'package:grocery_animation_app/models/product.dart';
+import 'package:grocery_animation_app/screens/detail/details_screen.dart';
+import 'package:grocery_animation_app/screens/home/components/card_detail_view.dart';
+import 'package:grocery_animation_app/screens/home/components/cart_short_view.dart';
+import 'package:grocery_animation_app/screens/home/components/header.dart';
 import 'package:grocery_animation_app/screens/home/components/product_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -53,6 +57,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         child: GridView.builder(
+                          physics: BouncingScrollPhysics(),
                           itemCount: demo_products.length,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
@@ -63,10 +68,65 @@ class HomeScreen extends StatelessWidget {
                           ),
                           itemBuilder: (context, index) => ProductCard(
                             product: demo_products[index],
-                            press: () {},
+                            press: () {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration:
+                                      Duration(milliseconds: 500),
+                                  reverseTransitionDuration:
+                                      Duration(milliseconds: 500),
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      FadeTransition(
+                                    opacity: animation,
+                                    child: DetailsScreen(
+                                        controller: controller,
+                                        product: demo_products[index],
+                                        onProductAdd: () {
+                                          controller.addProductToCart(
+                                              demo_products[index]);
+                                        }),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
+                    ),
+                    AnimatedPositioned(
+                      duration: panelTransition,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: controller.homeState == HomeState.normal
+                          ? cartBarHeight
+                          : (constraints.maxHeight - cartBarHeight),
+                      child: GestureDetector(
+                        onVerticalDragUpdate: _onVerticalGesture,
+                        child: Container(
+                          padding: const EdgeInsets.all(defaultPadding),
+                          color: Color(0xffeaeaea),
+                          alignment: Alignment.topLeft,
+                          child: AnimatedSwitcher(
+                            duration: panelTransition,
+                            child: controller.homeState == HomeState.normal
+                                ? CardShortView(controller: controller)
+                                : CardDetailView(controller: controller),
+                          ),
+                        ),
+                      ),
+                    ),
+                    AnimatedPositioned(
+                      child: HomeHeader(),
+                      top: controller.homeState == HomeState.normal
+                          ? 0
+                          : -headerHeight,
+                      right: 0,
+                      left: 0,
+                      height: headerHeight,
+                      duration: panelTransition,
                     ),
                   ],
                 );

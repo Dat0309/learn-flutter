@@ -10,6 +10,13 @@ class ProductItem {
     quantity++;
   }
 
-  void add() {}
-  void subtract() {}
+  void add() {
+    quantity++;
+  }
+
+  void subtract() {
+    if (quantity > 0) {
+      quantity--;
+    }
+  }
 }

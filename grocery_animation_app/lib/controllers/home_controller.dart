@@ -26,6 +26,30 @@ class HomeController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addQuantity(Product product) {
+    for (ProductItem item in cart) {
+      if (item.product!.title == product.title) {
+        item.add();
+        notifyListeners();
+        return;
+      }
+    }
+    cart.add(ProductItem(product: product));
+    notifyListeners();
+  }
+
+  void subQuantity(Product product) {
+    for (ProductItem item in cart) {
+      if (item.product!.title == product.title) {
+        item.subtract();
+        notifyListeners();
+        return;
+      }
+    }
+    cart.add(ProductItem(product: product));
+    notifyListeners();
+  }
+
   int totalCartItems() => cart.fold(
       0, (previousValue, element) => previousValue + element.quantity);
 }
