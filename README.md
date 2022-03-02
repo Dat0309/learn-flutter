@@ -5,3 +5,5 @@
 ![image](https://github.com/Dat0309/learn-flutter/blob/main/demo/travelapp.png)
 ![image](https://github.com/Dat0309/learn-flutter/blob/main/demo/wallpaperapp.png)
 ![image](https://github.com/Dat0309/learn-flutter/blob/main/demo/movieticketapp.png)
+![image](https://github.com/Dat0309/learn-flutter/blob/main/demo/grocery_animation_app.png)
+![image](https://github.com/Dat0309/learn-flutter/blob/main/demo/recipe_app.png)
