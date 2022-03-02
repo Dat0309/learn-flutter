@@ -17,12 +17,20 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
   List<Category> _categories = List<Category>.empty(growable: true);
   bool _isLoading = true;
   List<Recipe> _recipes = List<Recipe>.empty(growable: true);
+  ScrollController controller = ScrollController();
+  double topContainer = 0;
 
   @override
   void initState() {
     super.initState();
     getCate();
     getRecipes();
+    controller.addListener(() {
+      double value = controller.offset / 119;
+      setState(() {
+        topContainer = value;
+      });
+    });
   }
 
   Future<void> getCate() async {
@@ -109,25 +117,42 @@ class _BuildWidgetCategoryState extends State<BuildWidgetCategory> {
         _isLoading
             ? Center(child: CircularProgressIndicator())
             : ListView.separated(
+                controller: controller,
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   if (_recipes.isNotEmpty) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  RecipeDetail(recipe: _recipes[index]),
-                            ));
-                      },
-                      child: RecipeCard(
-                          title: _recipes[index].name,
-                          cookTime: _recipes[index].totalTime,
-                          rating: _recipes[index].rating.toString(),
-                          image: _recipes[index].images),
+                    double scale = 1.0;
+                    if (topContainer > 0.5) {
+                      scale = index + 0.5 - topContainer;
+                      if (scale < 0) {
+                        scale = 0;
+                      } else if (scale > 1) {
+                        scale = 1;
+                      }
+                    }
+                    return Opacity(
+                      opacity: scale,
+                      child: Transform(
+                        transform: Matrix4.identity()..scale(scale, scale),
+                        alignment: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      RecipeDetail(recipe: _recipes[index]),
+                                ));
+                          },
+                          child: RecipeCard(
+                              title: _recipes[index].name,
+                              cookTime: _recipes[index].totalTime,
+                              rating: _recipes[index].rating.toString(),
+                              image: _recipes[index].images),
+                        ),
+                      ),
                     );
                   }
                   return Container();
