@@ -234,7 +234,7 @@ class _PizzaDetailsState extends State<PizzaDetails>
             SizedBox(
               height: 5,
             ),
-            ValueListenableBuilder<int>(
+            ValueListenableBuilder<double>(
                 valueListenable: bloc.notifierTotal,
                 builder: (context, totalValue, _) {
                   return AnimatedSwitcher(

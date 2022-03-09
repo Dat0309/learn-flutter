@@ -4,11 +4,11 @@ import 'package:pizza_order_app/models/ingredient.dart';
 
 class PizzaOrderBloC extends ChangeNotifier {
   final listIngredients = <Ingredient>[];
-  final notifierTotal = ValueNotifier(15);
+  final notifierTotal = ValueNotifier(15.0);
 
   void addIngredient(Ingredient ingredient) {
     listIngredients.add(ingredient);
-    notifierTotal.value++;
+    notifierTotal.value += ingredient.cost as double;
     notifyListeners();
   }
 
@@ -22,7 +22,7 @@ class PizzaOrderBloC extends ChangeNotifier {
 
   void removeIngredient(Ingredient ingredient) {
     listIngredients.remove(ingredient);
-    notifierTotal.value--;
+    notifierTotal.value -= ingredient.cost as double;
     notifyListeners();
   }
 }
