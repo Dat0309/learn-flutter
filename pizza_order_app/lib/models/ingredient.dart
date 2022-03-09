@@ -5,11 +5,13 @@ class Ingredient {
     required this.image,
     required this.imageUnit,
     required this.positions,
+    required this.cost,
   });
 
   final String image;
   final String imageUnit;
   final List<Offset> positions;
+  final double cost;
 
   bool compare(Ingredient ingredient) => ingredient.image == image;
 }
@@ -25,6 +27,7 @@ final ingredients = <Ingredient>[
       Offset(0.5, 0.3),
       Offset(0.4, 0.65),
     ],
+    cost: 5,
   ),
   Ingredient(
     image: 'assets/images/garlic.png',
@@ -36,6 +39,7 @@ final ingredients = <Ingredient>[
       Offset(0.5, 0.2),
       Offset(0.3, 0.5),
     ],
+    cost: 5,
   ),
   Ingredient(
     image: 'assets/images/olive.png',
@@ -47,6 +51,7 @@ final ingredients = <Ingredient>[
       Offset(0.4, 0.2),
       Offset(0.2, 0.6),
     ],
+    cost: 3,
   ),
   Ingredient(
     image: 'assets/images/onion.png',
@@ -58,6 +63,7 @@ final ingredients = <Ingredient>[
       Offset(0.45, 0.35),
       Offset(0.4, 0.65),
     ],
+    cost: 4,
   ),
   Ingredient(
     image: 'assets/images/pea.png',
@@ -69,6 +75,7 @@ final ingredients = <Ingredient>[
       Offset(0.5, 0.2),
       Offset(0.3, 0.5),
     ],
+    cost: 6,
   ),
   Ingredient(
     image: 'assets/images/pickle.png',
@@ -80,6 +87,7 @@ final ingredients = <Ingredient>[
       Offset(0.45, 0.35),
       Offset(0.4, 0.65),
     ],
+    cost: 7,
   ),
   Ingredient(
     image: 'assets/images/potato.png',
@@ -91,5 +99,6 @@ final ingredients = <Ingredient>[
       Offset(0.5, 0.3),
       Offset(0.4, 0.65),
     ],
+    cost: 10,
   ),
 ];
