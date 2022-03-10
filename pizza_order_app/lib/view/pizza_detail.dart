@@ -3,6 +3,7 @@ import 'package:pizza_order_app/models/ingredient.dart';
 import 'package:pizza_order_app/models/pizza_size.dart';
 import 'package:pizza_order_app/provider/pizza_order_provider.dart';
 import 'package:pizza_order_app/widgets/my_size_btn.dart';
+import 'package:pizza_order_app/widgets/pizza_box.dart';
 
 class PizzaDetails extends StatefulWidget {
   const PizzaDetails({Key? key}) : super(key: key);
