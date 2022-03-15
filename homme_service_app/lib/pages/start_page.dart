@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:homme_service_app/animation/fadeanimation.dart';
 import 'package:homme_service_app/models/service.dart';
+import 'package:homme_service_app/pages/select_service.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({Key? key}) : super(key: key);
@@ -109,7 +110,12 @@ class _StartPageState extends State<StartPage> {
                       child: MaterialButton(
                         elevation: 0,
                         color: Colors.black,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SelectService()));
+                        },
                         height: 55,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
