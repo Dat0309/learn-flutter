@@ -4,7 +4,7 @@ class Room {
   final String name;
   final String img;
   final Color color;
-  final int status;
+  int status;
 
   Room(
       {required this.name,
@@ -18,7 +18,7 @@ List<Room> rooms = [
       name: 'Living Room',
       img: 'assets/images/livingroom.png',
       color: Colors.red,
-      status: 0),
+      status: 1),
   Room(
       name: 'Bedroom',
       img: 'assets/images/bedroom.png',
@@ -33,10 +33,10 @@ List<Room> rooms = [
       name: 'Kitchen',
       img: 'assets/images/kitchen.png',
       color: Colors.purple,
-      status: 0),
+      status: 1),
   Room(
       name: 'Office',
       img: 'assets/images/office.png',
       color: Colors.red,
-      status: 0),
+      status: 1),
 ];
