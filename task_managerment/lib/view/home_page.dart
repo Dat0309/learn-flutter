@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(notifyHelper),
+      appBar: _appBar(),
       body: Column(
         children: [
           _addTaskBar(),
@@ -116,6 +116,42 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  _appBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: !Get.isDarkMode ? Color(0xff424242) : Colors.white,
+      leading: GestureDetector(
+        onTap: () {
+          setState(() {
+            ThemeService().switchTheme();
+            notifyHelper.displayNotification(
+              title: "Theme Changed",
+              body: Get.isDarkMode
+                  ? "Activated Light Theme"
+                  : "Activated Dark Theme",
+            );
+            notifyHelper.scheduledNotification();
+          });
+        },
+        child: Icon(
+          Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.nightlight_round,
+          size: 20,
+          color: Get.isDarkMode ? Colors.black : Colors.white,
+        ),
+      ),
+      actions: [
+        CircleAvatar(
+          backgroundImage: AssetImage(
+            'assets/images/dat.jpg',
+          ),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+      ],
     );
   }
 }
