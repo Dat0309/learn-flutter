@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pizza_order_app/models/ipizza.dart';
+import 'package:pizza_order_app/models/pizza_decorator.dart';
 
 class Ingredient {
   Ingredient({
