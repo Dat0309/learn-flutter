@@ -1,3 +1,4 @@
+import 'package:pizza_order_app/models/concreated_decorator/cheese.dart';
 import 'package:pizza_order_app/models/concreated_decorator/chili.dart';
 import 'package:pizza_order_app/models/concreated_decorator/garlic.dart';
 import 'package:pizza_order_app/models/concreated_decorator/olive.dart';
@@ -96,6 +97,18 @@ class PizzaMenu {
       ],
       cost: 10,
     ),
+    // 8: Ingredient(
+    //   image: 'assets/images/cheese.png',
+    //   imageUnit: 'assets/images/cheese.png',
+    //   positions: <Offset>[
+    //     Offset(0.2, 0.3),
+    //     Offset(0.65, 0.25),
+    //     Offset(0.45, 0.25),
+    //     Offset(0.55, 0.35),
+    //     Offset(0.4, 0.65),
+    //   ],
+    //   cost: 11,
+    // ),
   };
 
   Map<int, Ingredient> getPizzaToppingDataMap() => ingredients;
@@ -123,6 +136,9 @@ class PizzaMenu {
     if (pizzaToppingDataMap[7]!.selected) {
       pizza = Potato(mPizza: pizza);
     }
+    // if (pizzaToppingDataMap[8]!.selected) {
+    //   pizza = Cheese(mPizza: pizza);
+    // }
 
     return pizza;
   }
